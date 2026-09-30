@@ -18,7 +18,10 @@ namespace Memoriajatek
     {
         List<string> palyameretek = new List<string> { "4x4", "6x6", "8x8" };
         List<string> palyatipusok = new List<string> { "Számok", "Emojik", "Betűk" };
-        List<string> szamok = new List<string> { };
+        List<string> szamok = new List<string> { "1", "1", "2", "2", "3", "3", "4", "4", "5", "5", "6", "6", "7", "7", "8", "8", "9", "9", "10", "10", "11", "11", "12", "12", "13", "13", "14", "14", "15", "15", "16", "16", "17", "17", "18", "18", "19", "19", "20", "20", "21", "21", "22", "22", "23", "23", "24", "24", "25", "25", "26", "26", "27", "27", "28", "28", "29", "29", "30", "30", "31", "31", "32", "32" };
+        List<string> emojik = new List<string> { "😀", "😀", "😂", "😂", "😍", "😍", "😎", "😎", "🤔", "🤔", "😴", "😴", "😡", "😡", "🥳", "🥳" };
+        List<string> betuk = new List<string> { "A", "A", "B", "B", "C", "C", "D", "D", "E", "E", "F", "F", "G", "G", "H", "H" };
+        List<string> jatekban = new List<string>();
         string meret;
         string tipus;
         public MainWindow()
@@ -42,12 +45,19 @@ namespace Memoriajatek
         {
 
             jatekter.Children.Clear();
+            jatekter.RowDefinitions.Clear();
+            jatekter.ColumnDefinitions.Clear();
             if (string.IsNullOrEmpty(meret) || string.IsNullOrEmpty(tipus))
             {
                 MessageBox.Show("Kérlek válassz pályaméretet és típust!");
                 return;
             }
             int meret_int = int.Parse(meret.Split('x')[0]);
+            for (int i = 0; i < meret_int*meret_int; i++)
+            {
+                jatekban.Add(tipus == "Számok" ? szamok[i] : tipus == "Emojik" ? emojik[i] : betuk[i]);
+            }
+            jatekban = jatekban.Shuffle().ToList();
             for (int i = 0; i < meret_int; i++)
             {
                 jatekter.RowDefinitions.Add(new RowDefinition());
@@ -61,11 +71,19 @@ namespace Memoriajatek
                     Button btn = new Button();
                     btn.Content = "?";
                     btn.FontSize = 24;
+                    btn.Click += button_Click;
                     Grid.SetRow(btn, i);
                     Grid.SetColumn(btn, j);
                     jatekter.Children.Add(btn);
                 }
             }
+        }
+        private void button_Click(object sender, RoutedEventArgs e)
+        {
+            Button btn = (Button)sender;
+            int index = jatekter.Children.IndexOf(btn);
+            btn.Content = jatekban[index];
+
         }
     }
 }
