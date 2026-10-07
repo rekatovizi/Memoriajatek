@@ -6,19 +6,21 @@
         xmlns:local="clr-namespace:Memoriajatek"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="*"/>
-        </Grid.ColumnDefinitions>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="80"/>
-            <RowDefinition Height="*"/>
-        </Grid.RowDefinitions>
-        <ListBox x:Name="lb_palyameret" SelectionChanged="kivalasztott_meret" Grid.Row="0" Grid.Column="0"/>
-        <ListBox x:Name="lb_tipus" Grid.Row="0"  Grid.Column="1" SelectionChanged="kivalasztott_tipus" />
-        <Button x:Name="btn_kezdes" Content="Kezdés" HorizontalAlignment="Center" VerticalAlignment="Center" Height="23" Width="74" RenderTransformOrigin="1.222,0.779" Click="btn_kezdes_Click" Grid.Row="1"/>
-        <TextBox x:Name="tb_tries" HorizontalAlignment="Center" Margin="0,238,0,0" Grid.Row="1" Grid.Column="0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" BorderThickness="0"/>
-        <Grid x:Name="jatekter" Grid.Row="1" Grid.Column="1" />
-    </Grid>
+    <Viewbox Stretch="Uniform">
+        <Grid Height="450" Width="800">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="100"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <ListBox x:Name="lb_palyameret" SelectionChanged="kivalasztott_meret" Grid.Row="0" Grid.Column="0" FontSize="20"/>
+            <ListBox x:Name="lb_tipus" Grid.Row="0"  Grid.Column="1" SelectionChanged="kivalasztott_tipus" FontSize="20" />
+            <Button x:Name="btn_kezdes" Content="Kezdés" HorizontalAlignment="Center" VerticalAlignment="Center" Height="42" Width="96" Click="btn_kezdes_Click" Grid.Row="1" FontSize="20"/>
+            <TextBox x:Name="tb_tries" HorizontalAlignment="Center" Margin="0,238,0,0" Grid.Row="1" Grid.Column="0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="215" BorderThickness="0" FontSize="20" Height="54"/>
+            <Grid x:Name="jatekter" Grid.Row="1" Grid.Column="1" />
+        </Grid>
+    </Viewbox>
 </Window>

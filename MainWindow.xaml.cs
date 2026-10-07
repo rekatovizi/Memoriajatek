@@ -32,7 +32,6 @@ namespace Memoriajatek
             InitializeComponent();
             lb_palyameret.ItemsSource = palyameretek;
             lb_tipus.ItemsSource = palyatipusok;
-            
         }
 
         private void kivalasztott_meret(object sender, SelectionChangedEventArgs e)
@@ -105,6 +104,8 @@ namespace Memoriajatek
                 }
                 if (pressed[0] == pressed[1])
                 {
+                    pressedGombok[0].IsEnabled = false;
+                    pressedGombok[1].IsEnabled = false;
                     pressedGombok[0].Foreground = Brushes.Green;
                     pressedGombok[1].Foreground = Brushes.Green;
                 }
